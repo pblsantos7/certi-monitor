@@ -1,0 +1,26 @@
+{
+  "name": "certi_monitor",
+  "version": "1.0.0",
+  "description": "O **Certi Monitor** é um sistema desenvolvido para auxiliar pessoas quem fazem a gestão de certificados, ou possui muitos. Ele faz o monitoramento da validade dos certificados digitais.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pblsantos7/certi-monitor.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/pblsantos7/certi-monitor/issues"
+  },
+  "homepage": "https://github.com/pblsantos7/certi-monitor#readme",
+  "devDependencies": {
+    "@types/node": "^22.20.2",
+    "tsx": "^4.23.13",
+    "typescript": "^7.0.2"
+  }
+}
