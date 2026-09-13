@@ -23,3 +23,7 @@ export function getAllCertificates(){
   return certificates
 }
 
+export function getCertificateById(id: number){
+  const certificate = certificates.find(certificate => certificate.id === id)
+  return certificate
+}
