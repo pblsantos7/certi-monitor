@@ -47,3 +47,10 @@ export function updateCertificate (
 
   return certificate
 }
+
+function deleteCertificado(id: number){
+  const indexCertificate = certificates.findIndex(certificate => certificate.id === id)
+  if(indexCertificate !== -1){
+    return certificates.splice(indexCertificate, 1)
+  }
+}
