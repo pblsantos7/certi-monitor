@@ -18,3 +18,8 @@ export function createCertificate(
   certificates.push(newCertificate);
   return newCertificate;
 }
+
+export function getAllCertificates(){
+  return certificates
+}
+
