@@ -27,3 +27,23 @@ export function getCertificateById(id: number){
   const certificate = certificates.find(certificate => certificate.id === id)
   return certificate
 }
+
+export function updateCertificate (
+  id: number,
+  name: string,
+  issuer: string,
+  dateEmission: Date,
+  dateExpiration: Date
+) {
+  const certificate = certificates.find(certificate => certificate.id === id)
+  if(!certificate){
+    return undefined
+  }
+
+  certificate.name = name
+  certificate.issuer = issuer
+  certificate.dateEmission = dateEmission
+  certificate.dateExpiration = dateExpiration
+
+  return certificate
+}
