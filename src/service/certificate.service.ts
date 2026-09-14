@@ -1,5 +1,6 @@
 import { certificates } from "../data/certificate.data.js";
 import type { Certificate } from "../data/certificate.data.js";
+let nextCertificateId = 1;
 
 export function createCertificate(
   name: string,
@@ -8,7 +9,7 @@ export function createCertificate(
   dateExpiration: Date
 ) {
   const newCertificate: Certificate = {
-    id: certificates.length + 1,
+    id: nextCertificateId++,,
     name: name,
     issuer: issuer,
     dateEmission: dateEmission,
@@ -48,7 +49,7 @@ export function updateCertificate (
   return certificate
 }
 
-function deleteCertificado(id: number){
+export function deleteCertificado(id: number){
   const indexCertificate = certificates.findIndex(certificate => certificate.id === id)
   if(indexCertificate !== -1){
     return certificates.splice(indexCertificate, 1)
