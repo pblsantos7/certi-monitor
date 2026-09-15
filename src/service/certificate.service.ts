@@ -9,7 +9,7 @@ export function createCertificate(
   dateExpiration: Date
 ) {
   const newCertificate: Certificate = {
-    id: nextCertificateId++,,
+    id: nextCertificateId++,
     name: name,
     issuer: issuer,
     dateEmission: dateEmission,
