@@ -49,6 +49,10 @@ export function updateCertificate (
     return undefined
   }
 
+  validateName(name)
+  validateDataEmission(dateEmission)
+  validateDateExpiration(dateExpiration, dateEmission)
+
   certificate.name = name
   certificate.issuer = issuer
   certificate.dateEmission = dateEmission
