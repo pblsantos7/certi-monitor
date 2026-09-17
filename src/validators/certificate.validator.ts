@@ -4,7 +4,7 @@ export function validateName(name: string): void{
     }
 }
 
-export function validateIssue(name: string): void{
+export function validateIssuer(issuer: string): void{
     if(name.trim().length === 0){
         throw new Error("Nome está vazio!")
     }

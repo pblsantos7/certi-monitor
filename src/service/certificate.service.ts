@@ -1,6 +1,6 @@
 import { certificates } from "../data/certificate.data.js";
 import type { Certificate } from "../data/certificate.data.js";
-import { validateName, validateDataEmission, validateDateExpiration} from "../validators/certificate.validator.js";
+import { validateName, validateIssuer, validateDataEmission, validateDateExpiration} from "../validators/certificate.validator.js";
 let nextCertificateId = 1;
 
 
@@ -12,7 +12,8 @@ export function createCertificate(
   dateExpiration: Date
 ) {
   
-  validateName(name, issuer)
+  validateName(name)
+  validateIssuer(issuer)
   validateDataEmission(dateEmission)
   validateDateExpiration(dateExpiration, dateEmission)
 
