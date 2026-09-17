@@ -51,6 +51,7 @@ export function updateCertificate (
   }
 
   validateName(name)
+  validateIssuer(issuer)
   validateDataEmission(dateEmission)
   validateDateExpiration(dateExpiration, dateEmission)
 
