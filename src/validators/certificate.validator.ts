@@ -4,6 +4,12 @@ export function validateName(name: string): void{
     }
 }
 
+export function validateIssue(name: string): void{
+    if(name.trim().length === 0){
+        throw new Error("Nome está vazio!")
+    }
+}
+
 export function validateDataEmission(date: Date): void{
     if(isNaN(date.getTime())){
         throw new Error("Data inválida")

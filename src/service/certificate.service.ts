@@ -12,7 +12,7 @@ export function createCertificate(
   dateExpiration: Date
 ) {
   
-  validateName(name)
+  validateName(name, issuer)
   validateDataEmission(dateEmission)
   validateDateExpiration(dateExpiration, dateEmission)
 
