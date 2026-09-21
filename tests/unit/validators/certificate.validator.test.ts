@@ -1,5 +1,5 @@
-import {describe, it, expect} from "vitest"
-import {validateName, validateIssuer, validateDataEmission, validateDateExpiration} from "../../../src/validators/certificate.validator.js"
+import { describe, it, expect } from "vitest"
+import { validateName, validateIssuer, validateDataEmission, validateDateExpiration } from "../../../src/validators/certificate.validator.js"
 
 describe('validateName', () => {
   it('deve lançar erro quando o nome está vazio', () => {
@@ -51,3 +51,24 @@ describe('validateDataEmission', () => {
     expect(() => validateDataEmission(yesterday)).not.toThrow();
   });
 });
+
+
+describe('validateDateExpiration', () => {
+  it('deve lançar um erro quando a data é inválida', () => {
+    expect(() => validateDateExpiration(new Date('data-invalida'), new Date('2026-10-08'))).toThrow('Data inválida')
+  });
+
+  it('deve lançar erro quando data de emissão for maior que a data de expiração', () => {
+    const dateEmission = new Date('2026-10-08')
+    const dateExpiration = new Date('2026-10-07')
+    expect(() => validateDateExpiration(dateExpiration, dateEmission)).toThrow('Data de expiração não pode ser igual ou menor que data de emissão!')
+  })
+
+  it('deve lançar erro quando a data de emissão for igual a data de expiração', () => {
+    const dateEmission = new Date('2026-10-08')
+    const dateExpiration = new Date('2026-10-08')
+    expect(() => validateDateExpiration(dateExpiration, dateEmission)).toThrow('Data de expiração não pode ser igual ou menor que data de emissão!')
+  })
+
+  
+})
