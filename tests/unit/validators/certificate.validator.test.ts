@@ -29,3 +29,25 @@ describe('validateIssuer', () => {
     expect(() => validateIssuer('Abc')).not.toThrow();
   });
 });
+
+describe('validateDataEmission', () => {
+  it('deve lançar erro quando a data é inválida', () => {
+    expect(() => validateDataEmission(new Date('data-invalida'))).toThrow('Data inválida');
+  });
+
+  it('deve lançar erro quando a data é futura', () => {
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    expect(() => validateDataEmission(tomorrow)).toThrow('Data não pode ser maior do que a de hoje!');
+  });
+
+  it('não deve lançar erro quando a data é hoje', () => {
+    expect(() => validateDataEmission(new Date())).not.toThrow();
+  });
+
+  it('não deve lançar erro quando a data é passada', () => {
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    expect(() => validateDataEmission(yesterday)).not.toThrow();
+  });
+});
