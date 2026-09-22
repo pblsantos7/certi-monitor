@@ -27,15 +27,24 @@ export function validateDataEmission(date: Date): void{
 }
 
 export function validateDateExpiration(dateExpiration: Date, dateEmission: Date): void{
+
+
+    const today = new Date()
+    today.setHours(0, 0, 0, 0)
+
     if(isNaN(dateExpiration.getTime())){
         throw new Error ("Data inválida")
     }
 
-    const copyDateExpiration = new Date(dateExpiration.getTime())
+     const copyDateExpiration = new Date(dateExpiration.getTime())
     copyDateExpiration.setHours(0, 0, 0, 0)
 
     const copyDateEmission = new Date (dateEmission.getTime())
     copyDateEmission.setHours(0, 0, 0, 0)
+
+    if(copyDateExpiration < today){
+        throw new Error("Data de expiração não pode ser anterior a hoje!")
+    }
 
     if(copyDateEmission >= copyDateExpiration){
         throw new Error("Data de expiração não pode ser igual ou menor que data de emissão! ")
