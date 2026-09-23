@@ -2,11 +2,11 @@
   "name": "certi_monitor",
   "version": "1.0.0",
   "description": "O Certi Monitor é um sistema desenvolvido para auxiliar pessoas quem fazem a gestão de certificados, ou possui muitos. Ele faz o monitoramento da validade dos certificados digitais.",
-  "main": "dist/index.js",
+  "main": "dist/main.js",
   "scripts": {
-    "dev": "tsx src/index.ts",
+    "dev": "tsx src/main.ts",
     "build": "tsc",
-    "start": "node dist/index.js",
+    "start": "node dist/main.js",
     "typecheck": "tsc --noEmit && tsc --project tsconfig.test.json",
     "test": "vitest run",
     "test:watch": "vitest"
