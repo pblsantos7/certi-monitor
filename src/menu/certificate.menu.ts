@@ -14,12 +14,10 @@ async function menu() {
         4 - Alterar certificado
         5 - deletar certificado
         6 - Sair`)
-    const optionStr = await rl.question("Qual operação você deseja fazer?: ")
-    const option: number = Number(optionStr)
-
+    const option = Number(await rl.question("Qual operação você deseja fazer?: "))
     do {
         switch (option) {
-            case 1:
+            case 1:{
                 try {
 
                     const name = await rl.question("Nome do certificado: ")
@@ -28,12 +26,10 @@ async function menu() {
                     const issuer = await rl.question("Emissor: ")
                     validateIssuer(issuer)
 
-                    const dateEm = await rl.question("Data de emisão (aaaa-mm-dd): ")
-                    const dateEmission = new Date(dateEm)
+                    const dateEmission = new Date(await rl.question("Data de emisão (aaaa-mm-dd): "))
                     validateDataEmission(dateEmission)
 
-                    const dateEx = await rl.question("Data de expiraçõ (aaaa-mm-dd): ")
-                    const dateExpiration = new Date(dateEx)
+                    const dateExpiration = new Date(await rl.question("Data de expiraçõ (aaaa-mm-dd): "))
                     validateDateExpiration(dateExpiration, dateEmission)
 
                     createCertificate(name, issuer, dateEmission, dateExpiration)
@@ -45,8 +41,9 @@ async function menu() {
                     }
                 }
                 break
+            }
 
-            case 2:
+            case 2:{
                 const certificates = getAllCertificates()
                 certificates.forEach(certificate => {
                     console.log(`Nome: ${certificate.name}
@@ -56,11 +53,11 @@ async function menu() {
                     `)
                 })
                 break
+            }
 
-            case 3:
-                const id = await rl.question("ID do certificado: ")
-                const idCertificate = Number(id)
-                const certificate = getCertificateById(idCertificate)
+            case 3:{
+                const id = Number(await rl.question("ID do certificado: "))
+                const certificate = getCertificateById(id)
 
                 if (certificate) {
                     console.log(`Nome: ${certificate.name}
@@ -72,6 +69,34 @@ async function menu() {
                     console.log("Certificado não encontrado.")
                 }
                     break
+            }
+
+                case 4:{
+                    try{
+                    const id = Number(await rl.question("Digite o Id: "))
+
+                    const name = await rl.question("Nome do certificado: ")
+                    validateName(name)
+
+                    const issuer = await rl.question("Emissor: ")
+                    validateIssuer(issuer)
+
+                    const dateEmission = new Date(await rl.question("Data de emisão (aaaa-mm-dd): "))
+                    validateDataEmission(dateEmission)
+
+                    const dateExpiration = new Date(await rl.question("Data de expiraçõ (aaaa-mm-dd): "))
+                    validateDateExpiration(dateExpiration, dateEmission)
+
+                    updateCertificate(id, name, issuer, dateEmission, dateExpiration)
+                    console.log("Certificado atualizado com sucesso")
+
+                    }catch(error){
+                        if(error instanceof Error){
+                            console.log(error.message)
+                        }
+                    }
+                }
+
         }
     } while (option != 6)
 }
