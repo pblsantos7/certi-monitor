@@ -57,6 +57,21 @@ async function menu() {
                 })
                 break
 
+            case 3:
+                const id = await rl.question("ID do certificado: ")
+                const idCertificate = Number(id)
+                const certificate = getCertificateById(idCertificate)
+
+                if (certificate) {
+                    console.log(`Nome: ${certificate.name}
+                    Emissor: ${certificate.issuer}
+                    Data de emissão: ${certificate.dateEmission.toLocaleDateString('pt-BR')}
+                    Data de expiração: ${certificate.dateExpiration.toLocaleDateString('pt-BR')}
+                    `)
+                } else {
+                    console.log("Certificado não encontrado.")
+                }
+                    break
         }
     } while (option != 6)
 }
