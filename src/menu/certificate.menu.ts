@@ -84,7 +84,7 @@ async function menu() {
                     const dateEmission = new Date(await rl.question("Data de emisão (aaaa-mm-dd): "))
                     validateDataEmission(dateEmission)
 
-                    const dateExpiration = new Date(await rl.question("Data de expiraçõ (aaaa-mm-dd): "))
+                    const dateExpiration = new Date(await rl.question("Data de expiração (aaaa-mm-dd): "))
                     validateDateExpiration(dateExpiration, dateEmission)
 
                     const certificate = updateCertificate(id, name, issuer, dateEmission, dateExpiration)
@@ -102,6 +102,18 @@ async function menu() {
                 }
                 break
             }
+
+            case 5:{
+                const id = Number(await rl.question("Digite o Id: "))
+                const idCertificate = deleteCertificado(id)
+                if(idCertificate){
+                    console.log("Certificado deletado com sucesso")
+                } else {
+                    console.log("Certificado não encontrado")
+                }
+                break
+            }
+                
 
         }
     } while (option != 6)
