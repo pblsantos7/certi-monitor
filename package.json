@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/pblsantos7/certi-monitor#readme",
   "devDependencies": {
-    "@types/node": "^22.20.2",
+    "@types/node": "^22.20.4",
     "tsx": "^4.23.13",
     "typescript": "^7.0.2",
     "vitest": "^5.0.1"
