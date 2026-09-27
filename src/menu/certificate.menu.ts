@@ -1,12 +1,12 @@
 import { createCertificate, getAllCertificates, getCertificateById, updateCertificate, deleteCertificado } from "../service/certificate.service.js";
 import { validateName, validateIssuer, validateDataEmission, validateDateExpiration } from "../validators/certificate.validator.js";
 import * as readline from "node:readline/promises"
-import {stdin as input, stdout as output} from "node:process"
+import { stdin as input, stdout as output } from "node:process"
 
 const rl = readline.createInterface(input, output)
 
 
-async function menu(){
+async function menu() {
     console.log(`
         1 - Cadastrar certificado
         2 - Listar todos os certificados
@@ -18,9 +18,9 @@ async function menu(){
     const option: number = Number(optionStr)
 
     do {
-        switch(option){
-                case 1:
-                    try{
+        switch (option) {
+            case 1:
+                try {
 
                     const name = await rl.question("Nome do certificado: ")
                     validateName(name)
@@ -39,15 +39,25 @@ async function menu(){
                     createCertificate(name, issuer, dateEmission, dateExpiration)
                     console.log("Certificado criado com sucesso")
 
-                } catch (error){
-                    if(error instanceof Error){
+                } catch (error) {
+                    if (error instanceof Error) {
                         console.log(error.message)
                     }
                 }
-                    break
-                    
+                break
+
+            case 2:
+                const certificates = getAllCertificates()
+                certificates.forEach(certificate => {
+                    console.log(`Nome: ${certificate.name}
+                    Emissor: ${certificate.issuer}
+                    Data de emissão: ${certificate.dateEmission.toLocaleDateString('pt-BR')}
+                    Data de expiração: ${certificate.dateExpiration.toLocaleDateString('pt-BR')}
+                    `)
+                })
+                break
+
         }
-   
-    } while(option != 6)
+    } while (option != 6)
 }
 
