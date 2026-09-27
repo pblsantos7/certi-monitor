@@ -17,7 +17,7 @@ async function menu() {
     const option = Number(await rl.question("Qual operação você deseja fazer?: "))
     do {
         switch (option) {
-            case 1:{
+            case 1: {
                 try {
 
                     const name = await rl.question("Nome do certificado: ")
@@ -43,7 +43,7 @@ async function menu() {
                 break
             }
 
-            case 2:{
+            case 2: {
                 const certificates = getAllCertificates()
                 certificates.forEach(certificate => {
                     console.log(`Nome: ${certificate.name}
@@ -55,7 +55,7 @@ async function menu() {
                 break
             }
 
-            case 3:{
+            case 3: {
                 const id = Number(await rl.question("ID do certificado: "))
                 const certificate = getCertificateById(id)
 
@@ -68,11 +68,11 @@ async function menu() {
                 } else {
                     console.log("Certificado não encontrado.")
                 }
-                    break
+                break
             }
 
-                case 4:{
-                    try{
+            case 4: {
+                try {
                     const id = Number(await rl.question("Digite o Id: "))
 
                     const name = await rl.question("Nome do certificado: ")
@@ -87,15 +87,21 @@ async function menu() {
                     const dateExpiration = new Date(await rl.question("Data de expiraçõ (aaaa-mm-dd): "))
                     validateDateExpiration(dateExpiration, dateEmission)
 
-                    updateCertificate(id, name, issuer, dateEmission, dateExpiration)
-                    console.log("Certificado atualizado com sucesso")
+                    const certificate = updateCertificate(id, name, issuer, dateEmission, dateExpiration)
+                    if (certificate) {
+                        console.log("Certificado atualizado com sucesso")
 
-                    }catch(error){
-                        if(error instanceof Error){
-                            console.log(error.message)
-                        }
+                    } else {
+                        console.log("Certificado não encontrado")
+                    }
+
+                } catch (error) {
+                    if (error instanceof Error) {
+                        console.log(error.message)
                     }
                 }
+                break
+            }
 
         }
     } while (option != 6)
