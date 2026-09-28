@@ -51,7 +51,8 @@ export async function menu() {
             case 2: {
                 const certificates = getAllCertificates()
                 certificates.forEach(certificate => {
-                    console.log(`Nome: ${certificate.name}
+                    console.log(`
+                    Nome: ${certificate.name}
                     Emissor: ${certificate.issuer}
                     Data de emissão: ${certificate.dateEmission.toLocaleDateString('pt-BR')}
                     Data de expiração: ${certificate.dateExpiration.toLocaleDateString('pt-BR')}
@@ -65,7 +66,8 @@ export async function menu() {
                 const certificate = getCertificateById(id)
 
                 if (certificate) {
-                    console.log(`Nome: ${certificate.name}
+                    console.log(`
+                    Nome: ${certificate.name}
                     Emissor: ${certificate.issuer}
                     Data de emissão: ${certificate.dateEmission.toLocaleDateString('pt-BR')}
                     Data de expiração: ${certificate.dateExpiration.toLocaleDateString('pt-BR')}

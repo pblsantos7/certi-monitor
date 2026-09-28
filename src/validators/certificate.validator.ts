@@ -12,6 +12,14 @@ export function validateIssuer(issuer: string): void{
     if(issuer.trim().length === 0){
         throw new Error("Emissor está vazio!")
     }
+
+    if(issuer.trim().length < 3){
+        throw new Error("Emissor precisa ter 3 ou mais caracteres!")
+    }
+
+    if (/\d/.test(issuer)) {
+        throw new Error("Emissor não pode conter números!")
+    }
 }
 
 export function validateDataEmission(date: Date): void{
