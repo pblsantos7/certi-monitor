@@ -2,6 +2,10 @@ export function validateName(name: string): void{
     if(name.trim().length === 0){
         throw new Error("Nome está vazio!")
     }
+
+    if(name.trim().length < 3){
+        throw new Error("Nome precisa ter 3 ou mais caracteres!")
+    }
 }
 
 export function validateIssuer(issuer: string): void{
