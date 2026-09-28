@@ -6,17 +6,22 @@ import { stdin as input, stdout as output } from "node:process"
 const rl = readline.createInterface(input, output)
 
 
-async function menu() {
-    console.log(`
-        1 - Cadastrar certificado
-        2 - Listar todos os certificados
-        3 - Buscar certificado por ID
-        4 - Alterar certificado
-        5 - deletar certificado
-        6 - Sair`)
-    const option = Number(await rl.question("Qual operação você deseja fazer?: "))
+export async function menu() {
+    
+    let option = 0
+    
     do {
+
+        console.log(`
+            1 - Cadastrar certificado
+            2 - Listar todos os certificados
+            3 - Buscar certificado por ID
+            4 - Alterar certificado
+            5 - deletar certificado
+            6 - Sair`)
+        option = Number(await rl.question("Qual operação você deseja fazer?: "))
         switch (option) {
+
             case 1: {
                 try {
 
@@ -113,7 +118,10 @@ async function menu() {
                 }
                 break
             }
-                
+
+            default:
+                console.log("Opção inválida")
+                break
 
         }
     } while (option != 6)
